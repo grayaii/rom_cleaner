@@ -7,10 +7,11 @@ When you run it with the --delete flag, it WILL delete ROMs!
 
 Make a backup of your ROMs before using the --delete flag!
 
-This is a simple script that will save your ROMs,
+This is a simple script that will delete your ROMs,
 based on their file name.
 
-It is guaranteed to keep 1 (and only 1) ROM.
+It is guaranteed to keep 1 (and only 1) ROM of each "type".
+
 For instance (this is safe to run... you need to explicity put the **--delete** flag actually delete stuff.)
 
 ```bash
