@@ -74,19 +74,22 @@ class Rom():
         ret_tokens = []
         ret_base_filename = os.path.basename(full_path_filename)
 
-        # Get all the tokens:
-        s_p = self.find(ret_base_filename, '(')
-        e_p = self.find(ret_base_filename, ')')
-        s_b = self.find(ret_base_filename, '[')
-        e_b = self.find(ret_base_filename, ']')
-        for i in range(len(s_p)):
-            ret_tokens.append(ret_base_filename[s_p[i]:e_p[i] + 1])
-        for i in range(len(s_b)):
-            ret_tokens.append(ret_base_filename[s_b[i]:e_b[i] + 1])
-        ret_stripped_filename = ret_base_filename
-        for m in ret_tokens:
-            ret_stripped_filename = ret_stripped_filename.replace(m, '')
-        ret_stripped_filename = ret_stripped_filename[:-4].strip() + ret_base_filename[-4:]
+        try:
+            # Get all the tokens:
+            s_p = self.find(ret_base_filename, '(')
+            e_p = self.find(ret_base_filename, ')')
+            s_b = self.find(ret_base_filename, '[')
+            e_b = self.find(ret_base_filename, ']')
+            for i in range(len(s_p)):
+                ret_tokens.append(ret_base_filename[s_p[i]:e_p[i] + 1])
+            for i in range(len(s_b)):
+                ret_tokens.append(ret_base_filename[s_b[i]:e_b[i] + 1])
+            ret_stripped_filename = ret_base_filename
+            for m in ret_tokens:
+                ret_stripped_filename = ret_stripped_filename.replace(m, '')
+            ret_stripped_filename = ret_stripped_filename[:-4].strip() + ret_base_filename[-4:]
+        except:
+            print("Problem proccessing: "+ret_base_filename)
 
         return ret_base_filename, ret_stripped_filename, ret_tokens, ret_base_filename
 
